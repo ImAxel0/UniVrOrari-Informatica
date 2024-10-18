@@ -27,3 +27,6 @@ git add .
 git commit -m "message"
 git push origin main
 ```
+
+### Stack tecnologico
+`Expo + React Native (TypeScript) + NativeWind CSS`
