@@ -6,6 +6,14 @@ L'applicazione permette di visualizzare gli orari delle lezioni del 1° anno del
 
 > App sviluppata per scopo personale data la scomodità di utilizzo della piattaforma originale, può smettere di funzionare improvvisamente
 
+---
+
+<p align="center">
+<img src="https://i.imgur.com/pHhW9nu.jpeg" width="400" />
+</p>
+
+---
+
 ### Running the project
 
 ```bash
