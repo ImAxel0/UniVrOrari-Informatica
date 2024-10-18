@@ -37,15 +37,14 @@ export default function Index() {
   const handleDateChange = (event: any, selectedDate?: Date) => {
     const currentDate = selectedDate || new Date();
     const newDate = getFirstDayOfWeek(currentDate);
-    setShowPicker(Platform.OS === "ios"); // On Android, hide after picking
+    setShowPicker(Platform.OS === "ios");
     setData(newDate);
     fetchLessons(newDate);
   };
 
-  // Function to get the first day of the week (Monday) based on the current date
   const getFirstDayOfWeek = (date: Date) => {
-    const day = date.getDay(); // 0 (Sunday) to 6 (Saturday)
-    const diff = (day === 0 ? -6 : 1) - day; // Calculate the difference to get Monday (1)
+    const day = date.getDay();
+    const diff = (day === 0 ? -6 : 1) - day;
     const firstDay = new Date(date);
     firstDay.setDate(date.getDate() + diff);
     return firstDay;
@@ -53,10 +52,10 @@ export default function Index() {
 
   const goToNextWeek = () => {
     if (data) {
-      const firstDayOfCurrentWeek = getFirstDayOfWeek(data); // Get current week's Monday
+      const firstDayOfCurrentWeek = getFirstDayOfWeek(data);
       const nextWeekStart = new Date(firstDayOfCurrentWeek);
-      nextWeekStart.setDate(nextWeekStart.getDate() + 7); // Move forward 7 days
-      setData(nextWeekStart); // Update the state
+      nextWeekStart.setDate(nextWeekStart.getDate() + 7);
+      setData(nextWeekStart);
       fetchLessons(nextWeekStart);
     }
   };
