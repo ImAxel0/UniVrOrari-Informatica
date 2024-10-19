@@ -14,7 +14,7 @@ const ColonnaGiorno = ({
 }) => {
   function filtraLezioni(giorno: string, matricola_pari: boolean): Lezione[] {
     let lezioniFiltrate = lezioni.filter((lezione) =>
-      lezione.nome_giorno.includes(giorno.toLowerCase())
+      lezione.nome_giorno?.includes(giorno.toLowerCase())
     );
 
     if (matricola_pari) {
