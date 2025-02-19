@@ -14,18 +14,24 @@ const ColonnaGiorno = ({
 }) => {
   function filtraLezioni(giorno: string, matricola_pari: boolean): Lezione[] {
     let lezioniFiltrate = lezioni.filter((lezione) =>
-      lezione.nome_giorno?.includes(giorno.toLowerCase())
+      lezione.nome_giorno?.toLowerCase().includes(giorno.toLowerCase())
     );
 
-    if (matricola_pari) {
-      lezioniFiltrate = lezioniFiltrate.filter(
-        (lezione) => !lezione.corso.toLowerCase().includes("dispari")
-      );
-    } else {
-      lezioniFiltrate = lezioniFiltrate.filter((lezione) =>
-        lezione.corso.toLowerCase().includes("dispari")
-      );
-    }
+    lezioniFiltrate = lezioniFiltrate.filter((lezione) => {
+      const corso = lezione.corso.toLowerCase();
+      const contienePari = corso.includes("pari");
+      const contieneDispari = corso.includes("dispari");
+
+      if (!contienePari && !contieneDispari) {
+        return true;
+      }
+
+      if (matricola_pari) {
+        return contienePari && !contieneDispari;
+      }
+
+      return !contienePari || contieneDispari;
+    });
 
     return lezioniFiltrate;
   }
